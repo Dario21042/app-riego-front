@@ -1,0 +1,54 @@
+.cronograma-container {
+  background: linear-gradient(180deg, #e9f5ff 0%, #fefefe 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.calendar-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+}
+
+.react-calendar {
+  width: 100% !important;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  border: none;
+}
+
+/* Día con gota */
+.turno-icon {
+  color: #007bff;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  animation: gotaZoom 0.4s ease;
+}
+
+@keyframes gotaZoom {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .calendar-wrapper {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .react-calendar {
+    font-size: 0.9rem;
+  }
+}
