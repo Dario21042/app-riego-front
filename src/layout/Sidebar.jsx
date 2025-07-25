@@ -169,6 +169,14 @@ export default function Sidebar() {
         {asistenciasOpen && (
           <div className="ms-3 mb-2">
             <li className="nav-item">
+              <li className="nav-item">
+                <Link
+                  to="/admin/registrar-asistencia"
+                  className={`nav-link text-white ${location.pathname === '/admin/registrar-asistencia' ? 'fw-bold bg-secondary' : ''}`}
+                >
+                  <FaEdit className="me-2" />Registrar Asistencia
+                </Link>
+              </li>
               <Link
                 to="/admin/listar-asistencias"
                 className={`nav-link text-white ${location.pathname === '/admin/listar-asistencias' ? 'fw-bold bg-secondary' : ''}`}
