@@ -26,7 +26,7 @@ const RegistrarTurno = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`https://appriegoyaku-production.up.railway.app/api/usuarios/listar`, {
+    fetch(`${import.meta.env.VITE_API_URL}/usuarios/listar`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     })
       .then(res => res.json())
@@ -72,7 +72,7 @@ const RegistrarTurno = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/turnos/crear`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/turnos/crear`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

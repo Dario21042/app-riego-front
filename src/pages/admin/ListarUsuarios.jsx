@@ -15,7 +15,7 @@ export default function ListarUsuarios() {
 
   const fetchUsuarios = async () => {
     try {
-      const response = await fetch('https://appriegoyaku-production.up.railway.app/api/usuarios/listar', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/usuarios/listar', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -41,7 +41,7 @@ export default function ListarUsuarios() {
 
     if (confirm.isConfirmed) {
       try {
-        await fetch(`https://appriegoyaku-production.up.railway.app/api/usuarios/${id}`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/usuarios/${id}`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${token}`

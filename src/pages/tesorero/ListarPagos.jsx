@@ -15,7 +15,7 @@ export default function ListarPagos() {
 
   const fetchPagos = async () => {
     setLoading(true);
-    let url = `https://appriegoyaku-production.up.railway.app/api/pagos/listar`;
+    let url = `${import.meta.env.VITE_API_URL}/pagos/listar`;
     if (estadoFiltro) url += `?estado=${estadoFiltro}`;
     try {
       const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
@@ -71,7 +71,7 @@ export default function ListarPagos() {
     }) : { value: '' };
     if (estado_pago === 'rechazado' && (!motivo.value || motivo.dismiss)) return;
     try {
-      const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/pagos/validar/${id_pago}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/pagos/validar/${id_pago}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ estado_pago, validado_por: usuario?.id_usuario, observaciones: motivo.value })

@@ -20,7 +20,7 @@ export default function CrearConvocatoria() {
 
   // Obtener tipos de evento desde el backend
   useEffect(() => {
-    fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/tipos-evento`, {
+    fetch(`${import.meta.env.VITE_API_URL}/convocatorias/tipos-evento`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -51,7 +51,7 @@ export default function CrearConvocatoria() {
     try {
       // Si seleccionaron "otro", primero lo creamos
       if (mostrarOtro && nuevoTipo.trim()) {
-        const resTipo = await fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/tipoCrear`, {
+        const resTipo = await fetch(`${import.meta.env.VITE_API_URL}/convocatorias/tipoCrear`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export default function CrearConvocatoria() {
         }
       }
 
-      const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/crear`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/convocatorias/crear`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

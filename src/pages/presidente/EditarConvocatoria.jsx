@@ -22,7 +22,7 @@ export default function EditarConvocatoria() {
 
   // Obtener tipos de evento desde el backend
   useEffect(() => {
-    fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/tipos-evento`, {
+    fetch(`${import.meta.env.VITE_API_URL}/convocatorias/tipos-evento`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -32,7 +32,7 @@ export default function EditarConvocatoria() {
 
   // Cargar datos de la convocatoria al iniciar
   useEffect(() => {
-    fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/seleccionar/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/convocatorias/seleccionar/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -73,7 +73,7 @@ export default function EditarConvocatoria() {
 
     try {
       if (mostrarOtro && nuevoTipo.trim()) {
-        const resTipo = await fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/tipoCrear`, {
+        const resTipo = await fetch(`${import.meta.env.VITE_API_URL}/convocatorias/tipoCrear`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ export default function EditarConvocatoria() {
         }
       }
 
-      const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/editar/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/convocatorias/editar/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

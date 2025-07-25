@@ -13,7 +13,7 @@ export default function ReporteAsistencia() {
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/listar`, {
+    fetch(`${import.meta.env.VITE_API_URL}/convocatorias/listar`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -23,7 +23,7 @@ export default function ReporteAsistencia() {
 
   useEffect(() => {
     if (convocatoriaSeleccionada) {
-      fetch(`https://appriegoyaku-production.up.railway.app/api/asistencias/listar/${convocatoriaSeleccionada}/resumen`, {
+      fetch(`${import.meta.env.VITE_API_URL}/asistencias/listar/${convocatoriaSeleccionada}/resumen`, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => res.json())

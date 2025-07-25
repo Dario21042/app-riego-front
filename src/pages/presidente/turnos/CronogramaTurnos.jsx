@@ -18,7 +18,7 @@ const CronogramaTurnos = () => {
     const fetchTurnos = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/turnos/listar`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/turnos/listar`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         const data = await res.json();

@@ -20,7 +20,7 @@ export default function RegistrarPago() {
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`https://appriegoyaku-production.up.railway.app/api/usuarios/listar`, {
+    fetch(`${import.meta.env.VITE_API_URL}/usuarios/listar`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -51,7 +51,7 @@ export default function RegistrarPago() {
     }
     setLoading(true);
     try {
-      const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/pagos/registrar`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/pagos/registrar`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

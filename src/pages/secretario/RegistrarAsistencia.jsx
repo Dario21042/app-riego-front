@@ -18,10 +18,10 @@ export default function RegistrarAsistencia() {
     const fetchData = async () => {
       try {
         const [convRes, asisRes] = await Promise.all([
-          fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/listar`, {
+          fetch(`${import.meta.env.VITE_API_URL}/convocatorias/listar`, {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          fetch(`https://appriegoyaku-production.up.railway.app/api/asistencias/listar`, {
+          fetch(`${import.meta.env.VITE_API_URL}/asistencias/listar`, {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);
@@ -41,14 +41,14 @@ export default function RegistrarAsistencia() {
 
   useEffect(() => {
     if (convocatoriaSeleccionada) {
-      fetch(`https://appriegoyaku-production.up.railway.app/api/usuarios/listar`, {
+      fetch(`${import.meta.env.VITE_API_URL}/usuarios/listar`, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => res.ok ? res.json() : [])
         .then(data => setUsuarios(Array.isArray(data) ? data : []))
         .catch(() => setUsuarios([]));
 
-      fetch(`https://appriegoyaku-production.up.railway.app/api/asistencias/listarporId/${convocatoriaSeleccionada}`, {
+      fetch(`${import.meta.env.VITE_API_URL}/asistencias/listarporId/${convocatoriaSeleccionada}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => res.json())
@@ -92,7 +92,7 @@ export default function RegistrarAsistencia() {
     let errores = 0;
     for (const id_usuario of Object.keys(registro)) {
       try {
-        const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/asistencias/registrar`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/asistencias/registrar`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ export default function RegistrarAsistencia() {
 
   const handleEditarAsistencia = async (id_asistencia, nuevoPresente) => {
     try {
-      const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/asistencias/editar/${id_asistencia}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/asistencias/editar/${id_asistencia}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ export default function RegistrarAsistencia() {
       });
       if (res.ok) {
         Swal.fire('¡Actualizado!', 'Asistencia editada correctamente', 'success');
-        const resAsis = await fetch(`https://appriegoyaku-production.up.railway.app/api/asistencias/listarporId/${convocatoriaSeleccionada}`, {
+        const resAsis = await fetch(`${import.meta.env.VITE_API_URL}/asistencias/listarporId/${convocatoriaSeleccionada}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await resAsis.json();

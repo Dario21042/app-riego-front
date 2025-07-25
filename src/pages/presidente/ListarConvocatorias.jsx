@@ -35,7 +35,7 @@ export default function ListarConvocatorias() {
 
   const fetchConvocatorias = async () => {
     try {
-      const response = await fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/listar`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/convocatorias/listar`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -65,7 +65,7 @@ export default function ListarConvocatorias() {
 
     if (confirm.isConfirmed) {
       try {
-        const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/eliminar/${id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/convocatorias/eliminar/${id}`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${token}`

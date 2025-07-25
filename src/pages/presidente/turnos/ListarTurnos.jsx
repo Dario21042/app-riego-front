@@ -10,7 +10,7 @@ const ListarTurnos = () => {
     const obtenerTurnos = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/turnos/listar`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/turnos/listar`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -26,7 +26,7 @@ const ListarTurnos = () => {
     if (!window.confirm('¿Estás seguro de eliminar este turno?')) return;
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/turnos/${id_turno}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/turnos/${id_turno}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

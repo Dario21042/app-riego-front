@@ -11,7 +11,7 @@ export default function ListarAsistencias() {
 
   // Cargar convocatorias disponibles
   useEffect(() => {
-    fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/listar`, {
+    fetch(`${import.meta.env.VITE_API_URL}/convocatorias/listar`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -22,7 +22,7 @@ export default function ListarAsistencias() {
   // Cargar asistencias de la convocatoria seleccionada
   useEffect(() => {
     if (convocatoriaSeleccionada) {
-      fetch(`https://appriegoyaku-production.up.railway.app/api/asistencias/listarporId/${convocatoriaSeleccionada}`, {
+      fetch(`${import.meta.env.VITE_API_URL}/asistencias/listarporId/${convocatoriaSeleccionada}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => res.json())

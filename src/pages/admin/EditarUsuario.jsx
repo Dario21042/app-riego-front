@@ -18,7 +18,7 @@ export default function EditarUsuario() {
 
   // Cargar datos del usuario al iniciar
   useEffect(() => {
-    fetch(`https://appriegoyaku-production.up.railway.app/api/usuarios/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/usuarios/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       }
@@ -52,7 +52,7 @@ export default function EditarUsuario() {
     }
 
     try {
-      const res = await fetch(`https://appriegoyaku-production.up.railway.app/api/usuarios/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/usuarios/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

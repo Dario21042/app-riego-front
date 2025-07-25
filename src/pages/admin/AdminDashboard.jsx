@@ -14,7 +14,7 @@ export default function AdminDashboard() {
           Authorization: `Bearer ${token}`
         };
         // Convocatorias
-        const resConv = await fetch(`https://appriegoyaku-production.up.railway.app/api/convocatorias/listar`, { headers });
+        const resConv = await fetch(`${import.meta.env.VITE_API_URL}/convocatorias/listar`, { headers });
         if (resConv.ok) {
           const convocatorias = await resConv.json();
           setTotalConvocatorias(Array.isArray(convocatorias) ? convocatorias.length : 0);
@@ -22,7 +22,7 @@ export default function AdminDashboard() {
           setTotalConvocatorias(0);
         }
         // Usuarios
-        const resUsu = await fetch(`https://appriegoyaku-production.up.railway.app/api/usuarios/listar`, { headers });
+        const resUsu = await fetch(`${import.meta.env.VITE_API_URL}/usuarios/listar`, { headers });
         if (resUsu.ok) {
           const usuarios = await resUsu.json();
           setTotalUsuarios(Array.isArray(usuarios) ? usuarios.length : 0);
