@@ -15,7 +15,7 @@ export default function ListarUsuarios() {
 
   const fetchUsuarios = async () => {
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/usuarios/listar', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/usuarios/listar`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
