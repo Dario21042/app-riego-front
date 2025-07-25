@@ -4,9 +4,9 @@ import { useState } from 'react';
 import logo from '../assets/LogoV4.png';
 import {
   FaUsers, FaPlus, FaList, FaChartBar, FaBullhorn, FaCalendarCheck,
-  FaMoneyBillAlt, FaTint, FaSignOutAlt, FaChevronDown, FaChevronUp
+  FaMoneyBillAlt, FaTint, FaSignOutAlt, FaChevronDown, FaChevronUp,
+  FaEdit // 👈 AÑADIDO AQUÍ
 } from 'react-icons/fa';
-
 export default function Sidebar() {
   const { logout, usuario } = useAuth();
   const navigate = useNavigate();
